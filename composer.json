@@ -1,0 +1,36 @@
+{
+  "name": "emilienkopp/stashable",
+  "description": "An attribute-based caching system for repositories",
+  "type": "library",
+  "version": "0.1.0",
+  "require": {
+    "php": "^8.2",
+    "laravel/framework": "^11.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Emilienkopp\\Stashable\\": "src/"
+    },
+    "classmap": [
+      "src/StashableServiceProvider.php",
+      "src/Console/Commands",
+      "src/Traits/Stashable.php",
+      "src/Attributes/WithCache.php",
+      "src/Services/RepoCache.php",
+      "src/Utils/Attr.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "EmilienKopp"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "EmilienKopp\\Stashable\\StashableServiceProvider"
+      ]
+    }
+  }
+}
