@@ -1,6 +1,6 @@
 <?php
 
-namespace EmilienKopp\Stashable\Utils;
+namespace Splitstack\Stashable\Utils;
 
 class Attr {
   public static function all($class, $method, $attributesClass) {

@@ -1,10 +1,10 @@
 <?php
 
-namespace EmilienKopp\Stashable;
+namespace Splitstack\Stashable;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
-use EmilienKopp\Stashable\Console\Commands\MakeRepositoryCommand;
+use Splitstack\Stashable\Console\Commands\MakeRepositoryCommand;
 
 class StashableServiceProvider extends ServiceProvider
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace EmilienKopp\Stashable\Services;
+namespace Splitstack\Stashable\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-use EmilienKopp\Stashable\Utils\Attr;
-use EmilienKopp\Stashable\Attributes\WithCache;
+use Splitstack\Stashable\Utils\Attr;
+use Splitstack\Stashable\Attributes\WithCache;
 use ReflectionClass;
 
 class RepoCache

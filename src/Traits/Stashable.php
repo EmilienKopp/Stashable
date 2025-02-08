@@ -1,8 +1,8 @@
 <?php
 
-namespace EmilienKopp\Stashable\Traits;
+namespace Splitstack\Stashable\Traits;
 
-use EmilienKopp\Stashable\Services\RepoCache;
+use Splitstack\Stashable\Services\RepoCache;
 
 
 trait Stashable

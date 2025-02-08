@@ -1,6 +1,6 @@
 <?php
 
-namespace EmilienKopp\Stashable\Console\Commands;
+namespace Splitstack\Stashable\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;

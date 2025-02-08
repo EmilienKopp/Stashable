@@ -1,6 +1,6 @@
 <?php
 
-namespace EmilienKopp\Stashable\Attributes;
+namespace Splitstack\Stashable\Attributes;
 
 use Attribute;
 

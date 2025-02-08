@@ -1,5 +1,5 @@
 {
-  "name": "emilienkopp/stashable",
+  "name": "splitstack/laravel-stashable",
   "description": "An attribute-based caching system for repositories",
   "type": "library",
   "version": "0.1.0",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Emilienkopp\\Stashable\\": "src/"
+      "Splitstack\\Stashable\\": "src/"
     },
     "classmap": [
       "src/StashableServiceProvider.php",
@@ -29,7 +29,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "EmilienKopp\\Stashable\\StashableServiceProvider"
+        "Splitstack\\Stashable\\StashableServiceProvider"
       ]
     }
   }
