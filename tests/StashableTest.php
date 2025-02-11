@@ -122,5 +122,11 @@ class StashableTest extends TestCase
     $result = UserRepository::refresh('getAll');
     $this->assertCount(0, $result);
   }
+
+  public function test_generates_a_default_cache_key_with_method_name() 
+  {
+    UserRepository::cache('getAdmins');
+    $this->assertTrue(Cache::has('user.getAdmins'));
+  }
   
 }

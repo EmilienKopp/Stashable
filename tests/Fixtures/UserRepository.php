@@ -34,6 +34,12 @@ class UserRepository
         return DB::table('users')->where('role', $role)->get();
     }
 
+    #[WithCache]
+    public function getAdmins()
+    {
+        return DB::table('users')->where('role', 'admin')->get();
+    }
+
     public function create(array $data)
     {
         return DB::table('users')->insert($data);

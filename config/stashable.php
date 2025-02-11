@@ -1,5 +1,5 @@
 <?php
 
 return [
-  'default_ttl' => 3600,
+  'default_ttl' => 60,
 ];

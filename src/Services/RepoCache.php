@@ -23,10 +23,9 @@ class RepoCache
     }
 
     $ttl = Attr::get($attributes, 'ttl');
-    $key = self::generateKey($args, $attributes);
+    $key = self::generateKey($args, $attributes, $method);
 
     if (count($tags) > 0) {
-      dump("HITTING TAGGED CACHE");
       return Cache::tags($tags)->remember($key, $ttl, function () use ($class, $method, $args) {
         return $method->invokeArgs(new $class, $args);
       });
@@ -82,9 +81,14 @@ class RepoCache
     }
   }
 
-  public static function generateKey($args, $attributes)
+  public static function generateKey($args, $attributes, $method = null)
   {
     $baseKey = Attr::get($attributes, 'key');
+    if(empty($baseKey) && $method) {
+      $repoName = Str::snake(Str::replaceLast('Repository', '', (new ReflectionClass($method->class))->getShortName()));
+      $methodName = $method->getName();
+      $baseKey = "{$repoName}.{$methodName}";
+    }
     $key = self::interpolateKey($baseKey, $args);
 
     if (Attr::get($attributes, 'useQuery')) {
