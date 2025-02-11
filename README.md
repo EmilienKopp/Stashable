@@ -118,7 +118,7 @@ Cache::tags(['roles'])->clear();
 
 ### Query Parameters
 
-Cache keys can include query parameters **from the Request facade** if `useQuery` is set to `true`, 
+Cache keys can append query parameters **from the Request facade** if `useQuery` is set to `true`, 
 ensuring different results for different query contexts:
 
 ```php
