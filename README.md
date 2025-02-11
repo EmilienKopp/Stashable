@@ -9,6 +9,10 @@
 
 An elegant attribute-based caching system for Laravel repositories. Simplify your repository caching with powerful attributes and flexible cache management.
 
+## Mention
+
+This package is part of the (WIP) **Splitstack** suite, a collection of tools and packages to help you build better Laravel applications. Stay tuned for more packages and updates!
+
 ## Features
 
 - 🎯 **Attribute-Based Caching**: Declaratively cache repository methods using PHP attributes
