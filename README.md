@@ -116,7 +116,7 @@ public function getByRole($role)
 Cache::tags(['roles'])->clear();
 ```
 
-### Query Parameters
+### Query Parameters (beta)
 
 Cache keys can append query parameters **from the Request facade** if `useQuery` is set to `true`, 
 ensuring different results for different query contexts:
