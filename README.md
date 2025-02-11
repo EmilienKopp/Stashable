@@ -1,7 +1,7 @@
 # Laravel Stashable
 
 <!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/splitstack/laravel-stashable.svg?style=flat-square)](https://packagist.org/packages/splitstack/laravel-stashable) -->
-[![Tests](https://img.shields.io/github/actions/workflow/status/splitstack/stashable/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/splitstack/stashable/actions/workflows/tests.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/emilienkopp/stashable/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/emilienkopp/stashable/actions/workflows/tests.yml)
 <!-- [![Total Downloads](https://img.shields.io/packagist/dt/splitstack/laravel-stashable.svg?style=flat-square)](https://packagist.org/packages/splitstack/laravel-stashable) -->
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D8.1-blue?style=flat-square)](https://www.php.net)
 [![Laravel Version](https://img.shields.io/badge/laravel-10.x%7C11.x-red?style=flat-square)](https://laravel.com)
