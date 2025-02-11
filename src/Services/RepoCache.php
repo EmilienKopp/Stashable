@@ -25,9 +25,8 @@ class RepoCache
     $ttl = Attr::get($attributes, 'ttl');
     $key = self::generateKey($args, $attributes);
 
-    Log::info("Cache key: $key");
-
     if (count($tags) > 0) {
+      dump("HITTING TAGGED CACHE");
       return Cache::tags($tags)->remember($key, $ttl, function () use ($class, $method, $args) {
         return $method->invokeArgs(new $class, $args);
       });
@@ -52,6 +51,23 @@ class RepoCache
     $reflection = new ReflectionClass($class);
     $method = $reflection->getMethod($method);
     return $method->invokeArgs(new $class, $args);
+  }
+
+  public static function get($class, $method, $args, $tags = [])
+  {
+    $reflection = new ReflectionClass($class);
+    $method = $reflection->getMethod($method);
+    $attributes = $method->getAttributes(WithCache::class);
+    if (empty($attributes)) {
+      return $method->invokeArgs(new $class, $args);
+    }
+
+    $key = self::generateKey($args, $attributes);
+    if (count($tags) > 0) {
+      return Cache::tags($tags)->get($key);
+    } else {
+      return Cache::get($key);
+    }
   }
 
   public static function bust($attributes, $args, $tags = [])
