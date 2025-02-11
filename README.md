@@ -110,9 +110,9 @@ $users = UserRepository::cache('search', 'John'); // sort=email
 composer test
 ```
 
-## Contributing
+<!-- ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details. -->
 
 ## Security
 
