@@ -54,19 +54,23 @@ class StashableTest extends TestCase
 
   public function test_it_includes_query_params_in_cache_key()
   {
-    $request = request();
-    $request->merge(['sort' => 'name']);
-
+    // First request with sort=name
+    $this->get('/test-endpoint?sort=name');
     $users1 = UserRepository::cache('search', 'John');
     $this->assertCount(1, $users1);
+    $key1 = "users.search" . json_encode(['sort' => 'name']);
+    $this->assertTrue(Cache::has($key1));
 
-    // Change query params
-    $request->merge(['sort' => 'email']);
-
-    // Should generate different cache key due to different query params
+    // Delete the matching user
     \DB::table('users')->where('name', 'like', '%John%')->delete();
+
+    // Second request with different sort parameter
+    $this->get('/test-endpoint?sort=email');
     $users2 = UserRepository::cache('search', 'John');
+    // Should get fresh result since it's a different cache key
     $this->assertCount(0, $users2);
+    $key2 = "users.search" . json_encode(['sort' => 'email']);
+    $this->assertTrue(Cache::has($key2));
   }
 
   public function test_it_handles_cache_tags()
@@ -128,5 +132,9 @@ class StashableTest extends TestCase
     UserRepository::cache('getAdmins');
     $this->assertTrue(Cache::has('user.getAdmins'));
   }
-  
+
+  public function test_query_parameters_affect_cache_keys()
+  {
+    //TODO
+  }
 }
