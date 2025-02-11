@@ -41,16 +41,38 @@ class UserRepository
 {
     use Stashable;
     
-    #[WithCache]
+    #[WithCache('user.all')] // Cache key: user.all
     public function getAll()
     {
         return User::all();
     }
     
-    #[WithCache]
+    #[WithCache(ttl: 3600)] // Cache for 1 hour
     public function getById($id)
     {
         return User::find($id);
+    }
+
+    #[WithCache(key: 'role_{0}')] // key: role_admin
+    public function getByRole($role)
+    {
+        return User::where('role', $role)->get();
+    }
+
+    #[WithCache(key: 'search.{0}.{1}')] // key: search.department.seniority
+    public function searchDepartment($department, $seniority)
+    {
+        return Product::where('department', $department)
+                      ->where('seniority', $seniority)
+                      ->get();
+    }
+
+    #[WithCache(key: 'search.{company}.{position}')] // key: search.github.engineer
+    public function searchCompany($company, $position)
+    {
+        return Product::where('department', $department)
+                      ->where('position', $position)
+                      ->get();
     }
 }
 ```
@@ -71,6 +93,14 @@ $users = UserRepository::get('getAll');
 $users = UserRepository::refresh('getAll');
 ```
 
+3. Default values:
+
+The TTL is set in `config/stashable.php` as 60 seconds by default.
+Keys will always default to the `singular model name` + `method name`.
+e.g.: `UserRepository::getAll()` will default to `user.getAll` if no key is provided
+in the `#[WithCache]` attribute.
+
+
 ### Cache Tags
 
 You can tag cache entries for bulk operations:
@@ -88,20 +118,16 @@ Cache::tags(['roles'])->clear();
 
 ### Query Parameters
 
-Cache keys automatically include query parameters, ensuring different results for different query contexts:
+Cache keys can include query parameters **from the Request facade** if `useQuery` is set to `true`, 
+ensuring different results for different query contexts:
 
 ```php
-#[WithCache]
-public function search($query)
+#[WithCache(key:'search', useQuery: true)] // key: search?department=HR&seniority=Junior
+public function search()
 {
-    return User::where('name', 'like', "%{$query}%")
-               ->orderBy(request('sort', 'id'))
-               ->get();
+  $query = Request::query();
+  return //... your search query
 }
-
-// Different cache keys for different sort parameters
-$users = UserRepository::cache('search', 'John'); // sort=name
-$users = UserRepository::cache('search', 'John'); // sort=email
 ```
 
 ## Testing
