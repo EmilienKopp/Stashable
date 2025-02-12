@@ -6,6 +6,7 @@
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D8.1-blue?style=flat-square)](https://www.php.net)
 [![Laravel Version](https://img.shields.io/badge/laravel-10.x%7C11.x-red?style=flat-square)](https://laravel.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Total Downloads](https://img.shields.io/packagist/dt/splitstack/laravel-stashable.svg?style=flat-square)](https://packagist.org/packages/splitstack/laravel-stashable)
 
 An elegant attribute-based caching system for Laravel repositories. Simplify your repository caching with powerful attributes and flexible cache management.
 
